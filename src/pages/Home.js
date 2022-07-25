@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import toast from 'react-hot-toast';
@@ -65,7 +66,7 @@ const Home = () => {
                     </button>
                     <span className="createInfo">
                         If you don't have an invite then create &nbsp;
-                        <a
+                        <a 
                             onClick={createNewRoom}
                             href=""
                             className="createNewBtn"
@@ -78,7 +79,7 @@ const Home = () => {
             <footer>
                 <h4>
                     Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/codersgyan">Coder's Gyan</a>
+                    <a href="https://github.com/Jadhav0427/rceditor">Modern Coder</a>
                 </h4>
             </footer>
         </div>
