@@ -79,7 +79,7 @@ const Home = () => {
             <footer>
                 <h4>
                     Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/Jadhav0427/rceditor">Modern Coder</a>
+                    <a href="https://www.javatpoint.com/python-oops-concepts">Modern Coder</a>
                 </h4>
             </footer>
         </div>
