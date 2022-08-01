@@ -21,11 +21,11 @@ const EditorPage = () => {
 
     useEffect(() => {
         const init = async () => {
-            socketRef.current = await initSocket();
+            socketRef.current = await initSocket(); //useRef- react ka hook hai,data strore krna hai uske under,joki multiple render ke under available hai,uske chane hone ke bad hamara componant chane na ho.compenent change hoga nhi,
             socketRef.current.on('connect_error', (err) => handleErrors(err));
             socketRef.current.on('connect_failed', (err) => handleErrors(err));
 
-            function handleErrors(e) {
+            function handleErrors(e) {  // error handles, error ko lock kregi
                 console.log('socket error', e);
                 toast.error('Socket connection failed, try again later.');
                 reactNavigator('/');
@@ -52,7 +52,7 @@ const EditorPage = () => {
                 }
             );
 
-            // Listening for disconnected
+            // Listening for disconnected 
             socketRef.current.on(
                 ACTIONS.DISCONNECTED,
                 ({ socketId, username }) => {
@@ -66,7 +66,7 @@ const EditorPage = () => {
             );
         };
         init();
-        return () => {
+        return () => { //listenr ko clean krna pdta hai nhi toh memory lick ka problem hoga. 
             socketRef.current.disconnect();
             socketRef.current.off(ACTIONS.JOINED);
             socketRef.current.off(ACTIONS.DISCONNECTED);
@@ -87,24 +87,24 @@ const EditorPage = () => {
         reactNavigator('/');
     }
 
-    if (!location.state) {
+    if (!location.state) {  //
         return <Navigate to="/" />;
     }
 
-    return (
-        <div className="mainWrap">
+    return (    //editor page ke left side ke part ke liye
+        <div className="mainWrap"> 
             <div className="aside">
                 <div className="asideInner">
                     <div className="logo">
                         <img
                             className="logoImage"
-                            src="/code-sync.png"
+                            src="/logo1.png"
                             alt="logo"
                         />
                     </div>
                     <h3>Connected</h3>
-                    <div className="clientsList">
-                        {clients.map((client) => (
+                    <div className="clientsList"> 
+                        {clients.map((client) => ( // current client return krne ke liye
                             <Client
                                 key={client.socketId}
                                 username={client.username}

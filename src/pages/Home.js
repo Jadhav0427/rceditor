@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const navigate = useNavigate();
 
-    const [roomId, setRoomId] = useState('');
+    const [roomId, setRoomId] = useState('');      //we use , useState to store input's 
     const [username, setUsername] = useState('');
-    const createNewRoom = (e) => {
+    const createNewRoom = (e) => {                 
         e.preventDefault();
-        const id = uuidV4();
+        const id = uuidV4();                       //id ke liye const id,
         setRoomId(id);
-        toast.success('Created a new room');
+        toast.success('Created a new room');    // we use toast to display msg "Created a new room"
     };
 
     const joinRoom = () => {
@@ -22,7 +22,7 @@ const Home = () => {
             return;
         }
 
-        // Redirect
+        // Redirect ,state option se yek page ka data dusre page main dalne ke liye state use kiya"username"
         navigate(`/editor/${roomId}`, {
             state: {
                 username,
@@ -34,13 +34,13 @@ const Home = () => {
         if (e.code === 'Enter') {
             joinRoom();
         }
-    };
-    return (
-        <div className="homePageWrapper">
+    }; 
+    return (                                   //First dashboard,home page 2 div class ke andar code kiye
+        <div className="homePageWrapper">           
             <div className="formWrapper">
                 <img
                     className="homePageLogo"
-                    src="/code-sync.png"
+                    src="logo1.png"
                     alt="code-sync-logo"
                 />
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
@@ -59,7 +59,7 @@ const Home = () => {
                         placeholder="USERNAME"
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
-                        onKeyUp={handleInputEnter}
+                        onKeyUp={handleInputEnter}  //enter marke bad bhi ander jayega
                     />
                     <button className="btn joinBtn" onClick={joinRoom}>
                         Join
@@ -78,8 +78,8 @@ const Home = () => {
             </div>
             <footer>
                 <h4>
-                    Built with &nbsp; by &nbsp;
-                    <a href="https://github.com/Jadhav0427/rceditor">Modern Coder</a>
+                    Made by &nbsp;
+                    <a href="https://github.com/Jadhav0427/rceditor">MJ</a>
                 </h4>
             </footer>
         </div>

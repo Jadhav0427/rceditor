@@ -23,9 +23,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
                     <Route
-                        path="/editor/:roomId"
-                        element={<EditorPage />}
-                    ></Route>
+                        path="/editor/:roomId"         //Two routes here.Router is used to define multiple routes in the application
+                        element={<EditorPage />}       //we give path here.Router is mainly used for developing Single Page Web Applications.
+                    ></Route>                          
                 </Routes>
             </BrowserRouter>
         </>

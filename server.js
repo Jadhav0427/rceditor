@@ -2,18 +2,18 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const path = require('path');
-const { Server } = require('socket.io');
+const { Server } = require('socket.io'); //socket se server import krn hai
 const ACTIONS = require('./src/Actions');
 
-const server = http.createServer(app);
-const io = new Server(server);
+const server = http.createServer(app); //server create
+const io = new Server(server);      
 
 app.use(express.static('build'));
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const userSocketMap = {};
+const userSocketMap = {};//userSocketMap--socketId or username ,konse socket ke liye  konse id hai isliye map()kr kre
 function getAllConnectedClients(roomId) {
     // Map
     return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
@@ -25,7 +25,7 @@ function getAllConnectedClients(roomId) {
         }
     );
 }
-
+// all methods io variable ke ander mil jayegi , 
 io.on('connection', (socket) => {
     console.log('socket connected', socket.id);
 
@@ -63,5 +63,5 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; //listen port
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));

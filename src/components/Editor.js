@@ -8,8 +8,8 @@ import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from '../Actions';
 
 const Editor = ({ socketRef, roomId, onCodeChange }) => {
-    const editorRef = useRef(null);
-    useEffect(() => {
+    const editorRef = useRef(null);//editorRef dunction ke under sb bind kiya hai.//sysnc code use this.
+    useEffect(() => {   //to use codemirror, async function use kiya
         async function init() {
             editorRef.current = Codemirror.fromTextArea(
                 document.getElementById('realtimeEditor'),
@@ -22,10 +22,10 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
                 }
             );
 
-            editorRef.current.on('change', (instance, changes) => {
+            editorRef.current.on('change', (instance, changes) => { //sysnc code use this.
                 const { origin } = changes;
-                const code = instance.getValue();
-                onCodeChange(code);
+                const code = instance.getValue(); //
+                onCodeChange(code); //code lock krega
                 if (origin !== 'setValue') {
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
                         roomId,
