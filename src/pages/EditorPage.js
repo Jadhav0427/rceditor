@@ -21,7 +21,8 @@ const EditorPage = () => {
 
     useEffect(() => {
         const init = async () => {
-            socketRef.current = await initSocket(); //useRef- react ka hook hai,data strore krna hai uske under,joki multiple render ke under available hai,uske chane hone ke bad hamara componant chane na ho.compenent change hoga nhi,
+            socketRef.current = await initSocket(); //useRef- react ka
+            // hook hai,data strore krna hai uske under,joki multiple render ke under available hai,uske chane hone ke bad hamara componant chane na ho.compenent change hoga nhi,
             socketRef.current.on('connect_error', (err) => handleErrors(err));
             socketRef.current.on('connect_failed', (err) => handleErrors(err));
 

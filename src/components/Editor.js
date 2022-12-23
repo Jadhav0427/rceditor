@@ -8,7 +8,7 @@ import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from '../Actions';
 
 const Editor = ({ socketRef, roomId, onCodeChange }) => {
-    const editorRef = useRef(null);//editorRef dunction ke under sb bind kiya hai.//sysnc code use this.
+    const editorRef = useRef(null);//editorRef function ke under sb bind kiya hai.//sysnc code use this.
     useEffect(() => {   //to use codemirror, async function use kiya
         async function init() {
             editorRef.current = Codemirror.fromTextArea(
